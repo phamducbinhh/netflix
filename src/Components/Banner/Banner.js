@@ -1,21 +1,14 @@
-import React, {  useEffect } from "react";
+import React from "react";
 import BannerItem from "./BannerItem";
 import { SwiperSlide, Swiper } from "swiper/react";
 import { Autoplay } from "swiper";
 import "swiper/css";
 import "swiper/css/autoplay";
-import { API } from "../Api/ConfigApi";
+import useFetchData from "../../Hooks/useFetchData";
 
 const Banner = () => {
-  const [movies, setMovies] = React.useState([]);
-  useEffect(() => {
-    const getData = async () => {
-      const respones = await fetch(API.getBanner());
-      const data = await respones.json();
-      setMovies(data.results);
-    };
-    getData();
-  }, []);
+  //custom hook
+  const { movies } = useFetchData("upcoming");
 
   return (
     <>

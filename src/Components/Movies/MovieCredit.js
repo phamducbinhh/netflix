@@ -1,20 +1,9 @@
-import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import { endPointImage, API } from "../Api/ConfigApi";
+import React  from "react";
+import { useFetchCredit } from "../../Hooks/useFetchData";
+import { endPointImage } from "../Api/ConfigApi";
 
 const MovieCredit = () => {
-  const { movieId } = useParams();
-
-  const [movies, setMovies] = useState([]);
-  useEffect(() => {
-    const getData = async () => {
-      const respones = await fetch(API.getMovieCredit(movieId));
-      const data = await respones.json();
-      if (!data.cast) return;
-      setMovies(data.cast);
-    };
-    getData();
-  }, [movieId]);
+  const { movies } = useFetchCredit();
   return (
     <div className="py-10">
       <h1 className="mb-3 text-3xl font-bold leading-relaxed text-center text-white">

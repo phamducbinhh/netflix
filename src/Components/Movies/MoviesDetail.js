@@ -1,23 +1,12 @@
-import React, { useEffect } from "react";
-import { useParams } from "react-router-dom";
-import {  endPointImage,  API } from "../Api/ConfigApi";
+import React from "react";
+import { useFetchDetail } from "../../Hooks/useFetchData";
+import { endPointImage } from "../Api/ConfigApi";
 import MovieCredit from "./MovieCredit";
 import MovieSimilar from "./MovieSimilar";
 import MovieTrailer from "./MovieTrailer";
 
 const MoviesDetail = () => {
-  const { movieId } = useParams();
-  const [moviesDetails, setMoviesDetail] = React.useState();
-
-  useEffect(() => {
-    const getMoviesDetail = async () => {
-      const respones = await fetch(API.getMovieDetail(movieId));
-      const data = await respones.json();
-      if (!data) return;
-      setMoviesDetail(data);
-    };
-    getMoviesDetail();
-  }, [movieId]);
+const {moviesDetails} = useFetchDetail();
 
   return (
     <>

@@ -1,11 +1,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,500;0,700;1,400&display=swap");
 
 @layer base {
   body {
-    @apply bg-slate-900 font-body px-5;
+    @apply bg-slate-900 font-body px-5 text-white;
   }
 }
 @layer components {
@@ -13,11 +12,22 @@
     max-width: 1280px;
     @apply mx-auto;
   }
-  .movies-list .swiper-slide {
+  .movie-list .swiper-slide {
     width: 300px;
+    height: auto;
   }
   .banner .swiper {
     height: 100%;
+  }
+}
+// pagination
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  .selected {
+    @apply text-primary;
   }
 }
 .skeleton {
